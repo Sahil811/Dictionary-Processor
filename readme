@@ -1,0 +1,62 @@
+
+Dictionary Processor
+Overview
+The Dictionary Processor is a Python-based tool for processing dictionary data from an input JSON file, translating English meanings into Hindi, and saving the processed entries to a new JSON file. It uses the Argos Translate library for language translation and supports batch processing with progress tracking and caching.
+
+Features
+Batch Processing: Processes entries in configurable batch sizes for efficiency.
+Translation: Translates English meanings to Hindi using Argos Translate.
+Caching: Uses a local cache to avoid redundant translations, improving performance.
+Progress Tracking: Saves progress and resumes from the last processed batch.
+Concurrent Execution: Processes dictionary entries concurrently to speed up execution.
+Resumable Execution: If interrupted, processing resumes from where it left off.
+Prerequisites
+Python 3.8 or higher
+Ensure Python is installed and available in your system PATH.
+
+Required Libraries
+Install the required Python packages using the following command:
+
+bash
+Copy code
+pip install argostranslate
+Usage
+1. Input File
+Place your input JSON file (e.g., jmdict-eng-3.3.1.json) in the desired location.
+
+2. Run the Script
+Execute the script by running:
+
+bash
+Copy code
+python dictionary_processor.py
+3. Output
+The processed dictionary will be saved as japanese_dictionary_hindi.json in the output folder.
+Progress and cache files are stored in the same directory.
+Configuration
+Input File: Update the input_file variable in the script to point to your JSON file.
+Output Folder: The output_folder variable specifies where output files will be saved.
+Batch Size: Customize the batch_size parameter to control how many entries are processed in each batch.
+Concurrency: Adjust the max_workers parameter to set the number of threads used for processing.
+Files Generated
+Output JSON: japanese_dictionary_hindi.json (processed dictionary with Hindi meanings).
+Translation Cache: .translation_cache.json (stores previously translated meanings).
+Progress File: .processing_progress.json (tracks processing progress).
+Error Handling
+Translation Errors: If a translation fails, the original English text is retained.
+File Errors: If a required file is missing, the script will create necessary placeholders or stop with an appropriate message.
+Example Output
+A processed dictionary entry will look like:
+
+json
+Copy code
+{
+    "kanji": ["食べる"],
+    "kana": ["たべる"],
+    "meaning": ["खाना", "भोजन करना"]
+}
+License
+This project is licensed under the MIT License.
+
+Contributing
+Feel free to submit issues or pull requests for improvements!
